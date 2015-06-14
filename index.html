@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Backbone Demo: Todos in JavaScript</title>
+    <link href="todos.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="json2.js"></script>
+    <script src="jquery-1.5.js"></script>
+    <script src="underscore-1.1.6.js"></script>
+    <script src="backbone.js"></script>
+    <script src="backbone-localstorage.js"></script>
+    <script src="todos.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Todo App Interface -->
+
+    <div id="todoapp">
+
+      <div class="title">
+        <h1>Todo - list</h1>
+      </div>
+
+      <div class="content">
+
+        <div id="create-todo">
+          <input id="new-todo" placeholder="Что нужно сделать?" type="text" />
+          <span class="ui-tooltip-top" style="display:none;">Нажмите Enter для сохранения задания</span>
+        </div>
+
+        <div id="todos">
+          <ul id="todo-list"></ul>
+        </div>
+
+        <div id="todo-stats"></div>
+
+      </div>
+
+    </div>
+
+    
+    <ul id="footermap">
+      
+      <li><a href="http://backbonejs.org/examples/todos/"> Оригинальная версия.</a></li>
+	  <li><a href="instr/instr.html"> Инструкция.</a></li>
+    </ul>
+
+
+
+    <!-- Templates -->
+
+    <script type="text/template" id="item-template">
+      <div class="todo <%= done ? 'done' : '' %>">
+        <div class="display <%= shift ? 'shift' : '' %>">
+        
+
+     	
+		  <input class="check" style="margin-left:25px;" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+          <div class="todo-content"></div>
+		  <span class="todo-add"></span>
+
+          <span class="todo-destroy"></span>
+        </div>
+        <div class="edit">
+          <input class="todo-input" type="text" value="" />
+        </div>
+      </div>
+    </script>
+
+    <script type="text/template" id="stats-template">
+      <% if (total) { %>
+        <span class="todo-count">
+          <span class="number"><%= remaining %></span>
+          <span class="word"><%= remaining == 1 ? 'пункт' : 'пункта' %></span> в очереди.
+        </span>
+      <% } %>
+      <% if (done) { %>
+        <span class="todo-clear">
+          <a href="#">
+            Очистить <span class="number-done"><%= done %></span>
+             <span class="word-done"><%= done == 1 ? 'выполненный пункт' : 'выполненных пункта' %></span>
+          </a>
+        </span>
+      <% } %>
+    </script>
+
+  </body>
+
+</html>
